@@ -6,42 +6,68 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 14:52:55 by aselezen          #+#    #+#             */
-/*   Updated: 2026/05/04 14:52:56 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/05/12 17:53:55 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putchar(char c)
+#include "ft_printf.h"
+
+int	ft_putchar(const char c)
 {
 	write(1, &c, 1);
+	return (1);
 }
 
-void	ft_putstr(char *str)
+int	ft_putstr(const char *str)
 {
+	int counter;
+
+	if (!str)
+		return (ft_putstr("(null)"));
+	counter = 0;
 	while (*str)
 	{
 		ft_putchar(*str);
 		str++;
+		counter++;
 	}
+	return (counter);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(long nbr, char *base)
 {
 	unsigned int	base_len;
-	unsigned int	num;
+	long			num;
+	int				count;
 
-	if (!ft_is_valid_base(base))
-		return ;
 	base_len = 0;
+	count = 0;
 	while (base[base_len])
 		base_len++;
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
+		count += write(1, "-", 1);
 		num = -nbr;
 	}
 	else
 		num = nbr;
 	if (num >= base_len)
-		ft_putnbr_base(num / base_len, base);
-	write(1, &base[num % base_len], 1);
+		count += ft_putnbr_base(num / base_len, base);
+	count += write(1, &base[num % base_len], 1);
+	return (count);
+}
+
+int	ft_putnbr_base_unsigned(unsigned long nbr, char *base)
+{
+	unsigned int	base_len;
+	int			count;
+
+	base_len = 0;
+	count = 0;
+	while (base[base_len])
+		base_len++;
+	if (nbr >= base_len)
+		count += ft_putnbr_base_unsigned(nbr / base_len, base);
+	count += write(1, &base[nbr % base_len], 1);
+	return (count);
 }
