@@ -17,6 +17,8 @@ int	ft_print_ptr(void *ptr)
 {
 	int	count;
 
+	if (!ptr)
+		return (ft_putstr("(nil)"));
 	count = ft_putstr("0x");
 	count += ft_putnbr_base_unsigned((unsigned long)ptr, "0123456789abcdef");
 	return (count);
