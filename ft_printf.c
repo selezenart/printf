@@ -6,12 +6,11 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 14:47:42 by aselezen          #+#    #+#             */
-/*   Updated: 2026/05/12 18:06:46 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:12:33 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printf(const char *format, ...)
 {
@@ -38,42 +37,41 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-int main()
-{
-	int value = 5;
-	char value2 = 'H';
-	char value3[] = "hello 42";
-	void *ptr = value3;
-	unsigned int value4 = 48879u;
-	int a = printf("real: %d\n", value);
-	int b = ft_printf("mine: %d\n", value);
-	printf("real = %d | mine = %d\n", a, b);
-	int c = printf("real: %c\n", value2);
-	int d = ft_printf("mine: %c\n", value2);
-	printf("real = %d | mine = %d\n", c, d);
-	int e = printf("real: %s\n", value3);
-	int f = ft_printf("mine: %s\n", value3);
-	printf("real = %d | mine = %d\n", e, f);
-	int k = printf("real: %u\n", value4);
-	int l = ft_printf("mine: %u\n", value4);
-	printf("real = %d | mine = %d\n", k, l);
-	int m = printf("real: %x\n", value4);
-	int n = ft_printf("mine: %x\n", value4);
-	printf("real = %d | mine = %d\n", m, n);
-	int o = printf("real: %X\n", value4);
-	int p = ft_printf("mine: %X\n", value4);
-	printf("real = %d | mine = %d\n", o, p);
-	int g = printf("real: %p\n", ptr);
-	int h = ft_printf("mine: %p\n", ptr);
-	printf("real = %d | mine = %d\n", g, h);
-	int i = printf("real: %%%%\n");
-	int j = ft_printf("mine: %%%%\n");
-	printf("real = %d | mine = %d\n", i, j);
-}
+// int main()
+// {
+// 	int value = 5;
+// 	char value2 = 'H';
+// 	char value3[] = "hello 42";
+// 	void *ptr = value3;
+// 	unsigned int value4 = 48879u;
+// 	int a = printf("real: %d\n", value);
+// 	int b = ft_printf("mine: %d\n", value);
+// 	printf("real = %d | mine = %d\n", a, b);
+// 	int c = printf("real: %c\n", value2);
+// 	int d = ft_printf("mine: %c\n", value2);
+// 	printf("real = %d | mine = %d\n", c, d);
+// 	int e = printf("real: %s\n", value3);
+// 	int f = ft_printf("mine: %s\n", value3);
+// 	printf("real = %d | mine = %d\n", e, f);
+// 	int k = printf("real: %u\n", value4);
+// 	int l = ft_printf("mine: %u\n", value4);
+// 	printf("real = %d | mine = %d\n", k, l);
+// 	int m = printf("real: %x\n", value4);
+// 	int n = ft_printf("mine: %x\n", value4);
+// 	printf("real = %d | mine = %d\n", m, n);
+// 	int o = printf("real: %X\n", value4);
+// 	int p = ft_printf("mine: %X\n", value4);
+// 	printf("real = %d | mine = %d\n", o, p);
+// 	int g = printf("real: %p\n", ptr);
+// 	int h = ft_printf("mine: %p\n", ptr);
+// 	printf("real = %d | mine = %d\n", g, h);
+// 	int i = printf("real: %%%%\n");
+// 	int j = ft_printf("mine: %%%%\n");
+// 	printf("real = %d | mine = %d\n", i, j);
+// }
 // #include "ft_printf.h"
 // #include <limits.h>
 // #include <stdio.h>
-
 // int	main(void)
 // {
 // 	printf("--- 1. Testing NULL String (%%s) ---\n");
@@ -171,6 +169,5 @@ int main()
 // 	ft_printf("ft_printf: >");
 // 	ft_printf("%d%s%p%%%%%%blablabla", 123, "abc", NULL);
 // 	ft_printf("<\n\n");
-
 // 	return (0);
-// }
+//}

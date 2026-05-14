@@ -1,28 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   handler.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 14:58:11 by aselezen          #+#    #+#             */
-/*   Updated: 2026/05/12 17:56:42 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/05/14 15:14:23 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
-int	ft_print_ptr(void *ptr)
-{
-	int	count;
-
-	if (!ptr)
-		return (ft_putstr("(nil)"));
-	count = ft_putstr("0x");
-	count += ft_putnbr_base_unsigned((unsigned long)ptr, "0123456789abcdef");
-	return (count);
-}
 
 int	ft_handle_format(const char c, va_list args)
 {
@@ -35,11 +23,14 @@ int	ft_handle_format(const char c, va_list args)
 	else if (c == 'd' || c == 'i')
 		return (ft_putnbr_base(va_arg(args, int), "0123456789"));
 	else if (c == 'x')
-		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789abcdef"));
+		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int),
+				"0123456789abcdef"));
 	else if (c == 'X')
-		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789ABCDEF"));
+		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int),
+				"0123456789ABCDEF"));
 	else if (c == 'u')
-		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int), "0123456789"));
+		return (ft_putnbr_base_unsigned(va_arg(args, unsigned int),
+				"0123456789"));
 	else if (c == '%')
 		return (ft_putchar('%'));
 	return (0);
